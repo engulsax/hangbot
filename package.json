@@ -9,6 +9,9 @@
   "author": "engulsax",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.2.0"
-  }
+    "axios": "^0.19.2",
+    "discord.js": "^12.2.0",
+    "random-words": "^1.1.1"
+  },
+  "devDependencies": {}
 }
