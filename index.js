@@ -12,6 +12,11 @@ const PORT = process.env.PORT
 
 server = http.createServer(function( req, res ){
 
+
+
+})
+
+server.listen(PORT, () => {
     bot.on('ready', () => {
         console.log("I am online")
     })
@@ -208,9 +213,4 @@ server = http.createServer(function( req, res ){
     function alreadyGussed(letter){
         channel.send(`you have already guessed ${letter}`)
     }
-
-})
-
-server.listen(PORT, () => {
-    console.log(`Server running at ${PORT}`)
  })
