@@ -1,6 +1,8 @@
 const { Client, MessageEmbed, MessageAttachment } = require('discord.js')
 const bot = new Client()
 
+const http = require("http");
+
 const token = "NzQyNDIyNjQyMzU0NjgzOTY3.XzF49w.9umPurT7wi2pDts9l18NhaMv0Ss"
 
 const randomWords = require('random-words');
@@ -8,63 +10,13 @@ const randomWords = require('random-words');
 const PORT = process.env.PORT
 
 
-/*const csgoMsgs = [
-    getItsTimeText("cs"), 
-    getItsTimeText("csgo"), 
-    getItsTimeText("counter strike"), 
-    getItsTimeText("counter strike global offensive")]
+server = http.createServer(function(req,res){
 
-const rlMsgs = [
-    getItsTimeText("rl"),
-    getItsTimeText("rocket leauge")
-]
-
-const valorantMsgs = [
-    getItsTimeText("valorant")
-]
-
-const minecraftMsgs = [
-    getItsTimeText("minecraft")
-]*/
-
-app.listen(PORT, function(){
-    
     bot.on('ready', () => {
         console.log("I am online")
     })
     
     bot.on('message', msg => {
-    
-        /*if(msg.author.id === bot.user.id){
-            return
-        }
-    
-    
-        if(valorantMsgs.includes(msg.content.toLowerCase())){
-            console.log("nice")
-            gameTime(msg, "valorant", valorantIcon)
-        }
-    
-        else if(rlMsgs.includes(msg.content.toLowerCase())){
-            gameTime(msg, "rocket league", rlIcon)
-        }
-    
-        else if(csgoMsgs.includes(msg.content.toLowerCase())) {
-                gameTime(msg, "csgo", csIcon)
-        }
-    
-        
-        else if(minecraftMsgs.includes(msg.content.toLowerCase())) {
-            gameTime(msg, "minecraft", minecraftIcon)
-        }
-    
-        else if(msg.content === "Is Deku playing today?"){
-            msg.channel.send("Nope.")
-        }
-    
-        else if(msg.content === "meme plz"){
-            getMeme()
-        }*/
     
         if(msg.content.toLowerCase() === "start hangman"){
             if(!hangmanOngoing){
@@ -90,67 +42,7 @@ app.listen(PORT, function(){
     })
     
     bot.login(token);
-    
-    
-    //-----------GAMETIME-----------------
-    /*
-    const valorantIcon = "https://img.icons8.com/plasticine/2x/valorant.png"
-    const rlIcon = "https://external-preview.redd.it/SpDNFegxVRzXyUta0BFMdNqyLVmXGVcKHhyVsqYjOfg.png?auto=webp&s=6ccb2078b5f2dbabd454f438ab6eddbc50420916"
-    const csIcon = "https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/cs-icon.png"
-    const minecraftIcon = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/977e8c4f-1c99-46cd-b070-10cd97086c08/d36qrs5-017c3744-8c94-4d47-9633-d85b991bf2f7.png"
-    
-    
-    function getItsTimeText(game){
-        return `its ${game} time`
-    }
-    
-    function gameTime(msg, game, icon){
-    
-        const role = msg.guild.roles.cache.find(role => role.name === "Buddies");
-    
-        const embed = new MessageEmbed()
-        // Set the title of the field
-        .setTitle(`${game.toUpperCase()} TIME`)
-        // Set the color of the embed
-        .setColor(0xff0000)
-        // Set the main content of the embed
-        .setDescription(`Beep Boop ${msg.author.username} is asking for his ${role} to play some ${game} with him!`)
-    
-        .setThumbnail(icon)
-        // Send the embed to the same channel as the message
-        msg.channel.send(embed)
-    
-    }
-    
-    //------------MEME----------------
-    
-    function sendMeme(msg, title, url){
-        
-        const embed = new MessageEmbed()
-        // Set the title of the field
-        .setTitle(`${title}`)
-        // Set the color of the embed
-        .setColor(0xff0000)
-        // Set the main content of the embed
-        .setImage(url)
-        // Send the embed to the same channel as the message
-        msg.channel.send(embed)
-    
-    }
-    
-    
-    function getMeme(){
-        axios.get('https://meme-api.herokuapp.com/gimme/1')
-        .then(response => {
-            var url = response.data.memes[0].url
-            var title = response.data.memes[0].title
-            sendMeme(msg, title, url)
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    }
-    */
+
     //----------HANGMAN--------------
     
     var channel 
@@ -318,3 +210,7 @@ app.listen(PORT, function(){
     }
 
 })
+
+server.listen(PORT, () => {
+    console.log(`Server running at ${port}`)
+ })
