@@ -10,7 +10,7 @@ const randomWords = require('random-words');
 const PORT = process.env.PORT
 
 
-server = http.createServer(function(req,res){
+server = http.createServer(function( req, res ){
 
     bot.on('ready', () => {
         console.log("I am online")
