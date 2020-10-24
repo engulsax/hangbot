@@ -1,7 +1,7 @@
 const { Client, MessageEmbed, MessageAttachment } = require('discord.js')
 const bot = new Client()
 
-const randomWords = require('random-words');
+const randomWords = require( 'random-words');
 
     bot.on('ready', () => {
         console.log("I am online")
