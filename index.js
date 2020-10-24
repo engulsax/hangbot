@@ -1,22 +1,8 @@
 const { Client, MessageEmbed, MessageAttachment } = require('discord.js')
 const bot = new Client()
 
-const http = require("http");
-
-const token = "NzQyNDIyNjQyMzU0NjgzOTY3.XzF49w.9umPurT7wi2pDts9l18NhaMv0Ss"
-
 const randomWords = require('random-words');
 
-const PORT = process.env.PORT
-
-
-server = http.createServer(function( req, res ){
-
-
-
-})
-
-server.listen(PORT, () => {
     bot.on('ready', () => {
         console.log("I am online")
     })
@@ -46,7 +32,7 @@ server.listen(PORT, () => {
         }
     })
     
-    bot.login(token);
+    bot.login(process.env.BOT_TOKEN);
 
     //----------HANGMAN--------------
     
@@ -213,4 +199,3 @@ server.listen(PORT, () => {
     function alreadyGussed(letter){
         channel.send(`you have already guessed ${letter}`)
     }
- })
